@@ -1,0 +1,80 @@
+.details__wrapper {
+  padding: 1.2rem;
+  min-height: 100vh;
+}
+.container {
+  background-color: #26416a;
+  color: #fff;
+  overflow: hidden;
+  height: 600px;
+  width: 100%;
+  border-radius: 2rem;
+  display: flex;
+}
+.aside__wrapper {
+  background-color: #506b92;
+  /* color: #000; */
+  height: 100%;
+  width: 25%;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+}
+.aside {
+  padding: 1.5rem;
+}
+.form__wrapper {
+  display: flex;
+  align-items: center;
+}
+.form__wrapper form input {
+  padding: 5px 10px;
+  outline: 0;
+  border: 1px solid grey;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+  width: 200px;
+}
+.text__center {
+  text-align: start;
+}
+.title {
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+.image__wrapper {
+  /* padding: 10px 0; */
+  text-align: start;
+}
+.image__wrapper img {
+  width: 100%;
+  max-width: 200px;
+  object-fit: contain;
+}
+.image__wrapper p {
+  font-size: 20px;
+  font-weight: 700;
+  color: grey;
+}
+.temp__count h1 {
+  font-weight: 500;
+  font-size: 2.5rem;
+  margin: 5px 0;
+}
+.temp__count h1 sup span {
+  font-size: 15px;
+  padding-left: 4px;
+}
+.temp__count h1 sup span sub {
+  font-size: 22px;
+}
+.day__display p {
+  font-size: 19px;
+  font-weight: 500;
+}
+.day__display p span {
+  font-weight: 900;
+}
+.condition {
+  margin-top: 3rem;
+}
