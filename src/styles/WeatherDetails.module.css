@@ -13,9 +13,8 @@
 }
 .aside__wrapper {
   background-color: #506b92;
-  /* color: #000; */
   height: 100%;
-  width: 25%;
+  width: 26%;
   overflow: hidden;
   border-right: 2px solid #fff;
 }
@@ -77,4 +76,35 @@
 }
 .condition {
   margin-top: 3rem;
+}
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+  .aside__wrapper {
+    border: 0;
+    width: 100%;
+  }
+  .text__center {
+    text-align: center;
+  }
+  .image__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form__wrapper form input {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .form__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

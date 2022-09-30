@@ -6,7 +6,7 @@ import visibility from "../assets/images/visibility.png";
 import sun from "../assets/images/sun1.png";
 import classes from "../styles/WeatherConditions.module.css";
 
-const WeatherConditions = () => {
+const WeatherConditions = ({ data }) => {
   return (
     <>
       <div className={classes.weather__conditions}>
@@ -27,9 +27,11 @@ const WeatherConditions = () => {
               <h4>Wind status</h4>
               <div className={classes.details}>
                 <img src={wind} alt="wind-icon" />
-                <p>
-                  7.70 <sub>km/h</sub>
-                </p>
+                {data.wind ? (
+                  <p>
+                    {data.wind.speed} <sub>km/h</sub>
+                  </p>
+                ) : null}
               </div>
             </div>
             <div className={classes.box}>
@@ -43,16 +45,19 @@ const WeatherConditions = () => {
               <h4>Humidity</h4>
               <div className={classes.details}>
                 <img src={humidity} alt="humidity-icon" />
-                <p>12%</p>
+                {data.main ? <p>{data.main.humidity} %</p> : null}
               </div>
             </div>
             <div className={classes.box}>
               <h4>Visibilty</h4>
               <div className={classes.details}>
                 <img src={visibility} alt="visibility-icon" />
-                <p>
-                  5.2 <sub>km</sub>
-                </p>
+                {data.visibility ? (
+                  <p>
+                    {data.visibility.toFixed(1) / 1000}
+                    <sub> km</sub>
+                  </p>
+                ) : null}
               </div>
             </div>
             <div className={classes.box}>

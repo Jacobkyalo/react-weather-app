@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from "react";
+import axios from "axios";
 
 // reducer function
 const weatherReducer = (state, action) => {
@@ -6,7 +7,12 @@ const weatherReducer = (state, action) => {
     case "FETCH_START":
       return { ...state, loading: true, error: false };
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, error: false, data: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        data: action.payload,
+      };
     case "FETCH_FAILED":
       return { ...state, loading: false, error: true };
 
@@ -21,24 +27,24 @@ const useFetchWeatherDetails = (url) => {
   const [state, dispatch] = useReducer(weatherReducer, {
     loading: false,
     error: false,
-    data: [],
+    data: {},
   });
 
   useEffect(() => {
     const fetchWeatherData = async () => {
       dispatch({ type: "FETCH_START" });
       try {
-        const result = await fetch(url);
-        dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        const res = await axios.get(url);
+        dispatch({ type: "FETCH_SUCCESS", payload: res.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAILED" });
       }
     };
 
     fetchWeatherData();
-  }, [url]);
+  }, []);
 
-  return state;
+  return { state };
 };
 
 export default useFetchWeatherDetails;

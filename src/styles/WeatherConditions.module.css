@@ -1,6 +1,6 @@
 .weather__conditions {
   padding: 1.5rem;
-  width: 75%;
+  width: 74%;
   overflow: hidden;
 }
 .header__top {
@@ -10,7 +10,6 @@
 }
 .converters__toggle {
   display: flex;
-  transform: translate(-50%);
 }
 
 .converters__toggle p {
@@ -68,4 +67,24 @@
 }
 .details .sun__details {
   font-size: 1.3rem;
+}
+@media (max-width: 992px) {
+  .weather__conditions {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .weather__conditions__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .box {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .weather__conditions__wrapper {
+    grid-template-columns: 1fr;
+  }
+  .header__top h2 {
+    font-size: 16.5px;
+  }
 }
