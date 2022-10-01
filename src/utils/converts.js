@@ -1,11 +1,52 @@
 // convert time units
-export const unixToLocalTime = (unixSeconds, timezone) => {
-  let time = new Date((unixSeconds + timezone) * 1000)
-    .toISOString()
-    .match(/(\d{2}:\d{2})/)[0];
-
+export const covertTime = (unixTime) => {
+  let time = new Date(unixTime * 1000).toLocaleTimeString();
   return time.startsWith("0") ? time.substring(1) : time;
 };
 
 //convert temp
-export const covertTemp = (c) => (c * 9) / 5 + 32;
+export const covertTemp = (c) => c - 273;
+
+//get day of the week
+export const getDayOfWeek = (unixTime) => {
+  let day = new Date(unixTime * 1000).getDay();
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  // get day as per unix time
+  switch (day) {
+    case 0:
+      return daysOfWeek[0];
+      break;
+    case 1:
+      return daysOfWeek[1];
+      break;
+    case 2:
+      return daysOfWeek[2];
+      break;
+    case 3:
+      return daysOfWeek[3];
+      break;
+    case 4:
+      return daysOfWeek[4];
+      break;
+    case 5:
+      return daysOfWeek[5];
+      break;
+    case 6:
+      return daysOfWeek[6];
+      break;
+    default:
+      throw new Error("No day!");
+      break;
+  }
+
+  return daysOfWeek;
+};

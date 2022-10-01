@@ -5,6 +5,7 @@ import humidity from "../assets/images/humidity.png";
 import visibility from "../assets/images/visibility.png";
 import sun from "../assets/images/sun1.png";
 import classes from "../styles/WeatherConditions.module.css";
+import { covertTime } from "../utils/converts";
 
 const WeatherConditions = ({ data }) => {
   return (
@@ -64,14 +65,22 @@ const WeatherConditions = ({ data }) => {
               <h4>Sunrise</h4>
               <div className={classes.details}>
                 <img src={sun} alt="sunrise-icon" />
-                <p className={classes.sun__details}>6.30 A.M</p>
+                {data.sys && (
+                  <p className={classes.sun__details}>
+                    {covertTime(data.sys.sunrise, data.timezone)}
+                  </p>
+                )}
               </div>
             </div>
             <div className={classes.box}>
               <h4>Sunset</h4>
               <div className={classes.details}>
                 <img src={sun} alt="sunset-icon" />
-                <p className={classes.sun__details}>7.00 A.M</p>
+                {data.sys && (
+                  <p className={classes.sun__details}>
+                    {covertTime(data.sys.sunset, data.timezone)}
+                  </p>
+                )}
               </div>
             </div>
           </section>

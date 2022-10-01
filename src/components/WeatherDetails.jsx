@@ -4,13 +4,13 @@ import img from "../assets/images/cloud.jpeg";
 import WeatherConditions from "./WeatherConditions";
 import classes from "../styles/WeatherDetails.module.css";
 import useFetchWeatherDetails from "../hooks/useFetchWeatherDetails";
-import { unixToLocalTime, covertTemp } from "../utils/converts";
+import { covertTime, covertTemp, getDayOfWeek } from "../utils/converts";
 
 const WeatherDetails = () => {
   const [regionInput, setRegionInput] = useState("");
 
   const { state } = useFetchWeatherDetails(
-    `https://api.openweathermap.org/data/2.5/weather?q=nairobi&appid=${process.env.REACT_APP_API_ID}`
+    `https://api.openweathermap.org/data/2.5/weather?q=meru&appid=${process.env.REACT_APP_API_ID}`
   );
   const data = state.data;
 
@@ -51,7 +51,7 @@ const WeatherDetails = () => {
               <div className={classes.temp__count}>
                 {data.main ? (
                   <h1>
-                    {covertTemp(data.main.temp)}
+                    {covertTemp(data.main.temp.toFixed())}
                     <sup>
                       <span>
                         o<sub>C</sub>
@@ -63,18 +63,18 @@ const WeatherDetails = () => {
               <div className={classes.day__display}>
                 {data.dt && (
                   <p>
-                    {data.dt},{" "}
+                    {getDayOfWeek(data.dt)},
                     {data.timezone && (
-                      <span>{unixToLocalTime(data.dt, data.timezone)}</span>
+                      <span> {covertTime(data.dt, data.timezone)}</span>
                     )}
                   </p>
                 )}
               </div>
-              {data.weather ? (
+              {data.weather && (
                 <h3 className={classes.condition}>
                   {data.weather[0].description}
                 </h3>
-              ) : null}
+              )}
             </div>
           </aside>
         </div>
