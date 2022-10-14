@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import WeatherConditions from "./WeatherConditions";
 import classes from "../styles/WeatherDetails.module.css";

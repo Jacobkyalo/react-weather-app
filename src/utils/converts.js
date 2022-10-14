@@ -24,29 +24,26 @@ export const getDayOfWeek = (unixTime) => {
   switch (day) {
     case 0:
       return daysOfWeek[0];
-      break;
+
     case 1:
       return daysOfWeek[1];
-      break;
+
     case 2:
       return daysOfWeek[2];
-      break;
+
     case 3:
       return daysOfWeek[3];
-      break;
+
     case 4:
       return daysOfWeek[4];
-      break;
+
     case 5:
       return daysOfWeek[5];
-      break;
+
     case 6:
       return daysOfWeek[6];
-      break;
+
     default:
       throw new Error("No day!");
-      break;
   }
-
-  return daysOfWeek;
 };
