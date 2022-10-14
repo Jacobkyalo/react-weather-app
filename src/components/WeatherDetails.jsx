@@ -20,11 +20,17 @@ const WeatherDetails = () => {
   const error = state.error;
 
   //function to handle search
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
+
+    //handle empty input
+    if (!regionInput) {
+      return;
+    }
     setUrl(
       `https://api.openweathermap.org/data/2.5/weather?q=${regionInput}&&appid=${process.env.REACT_APP_API_ID}&lang=en`
     );
+    setRegionInput("");
   };
 
   return (
@@ -55,7 +61,7 @@ const WeatherDetails = () => {
                         style={{ fontSize: "1.5rem", fontWeight: "900" }}
                       />
                     </p>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSearch}>
                       <input
                         type="text"
                         value={regionInput}
