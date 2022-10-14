@@ -1,4 +1,5 @@
 # Weather App
+A react app that consumes the [openweathermap API](https://openweathermap.org/api) to show current weather status of a given region/area.
 
 ## Cloning the project
 
