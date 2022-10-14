@@ -10,6 +10,7 @@
 }
 .converters__toggle {
   display: flex;
+  display: none;
 }
 
 .converters__toggle p {

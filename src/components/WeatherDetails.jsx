@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import img from "../assets/images/cloud.jpeg";
 import WeatherConditions from "./WeatherConditions";
 import classes from "../styles/WeatherDetails.module.css";
 import useFetchWeatherDetails from "../hooks/useFetchWeatherDetails";
 import { covertTime, covertTemp, getDayOfWeek } from "../utils/converts";
 
 const WeatherDetails = () => {
-  const [regionInput, setRegionInput] = useState("");
-
-  const { state } = useFetchWeatherDetails(
-    `https://api.openweathermap.org/data/2.5/weather?q=meru&appid=${process.env.REACT_APP_API_ID}`
+  const [regionInput, setRegionInput] = useState("Nairobi");
+  const [url, setUrl] = useState(
+    `https://api.openweathermap.org/data/2.5/weather?q=${regionInput}&appid=${process.env.REACT_APP_API_ID}&lang=en`
   );
+
+  //using custom hook
+  const { state } = useFetchWeatherDetails(url);
   const data = state.data;
+  console.log(data);
+
+  //function to handle search
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUrl(
+      `https://api.openweathermap.org/data/2.5/weather?q=${regionInput}&&appid=${process.env.REACT_APP_API_ID}&lang=en`
+    );
+  };
 
   return (
     <div className={classes.details__wrapper}>
@@ -23,33 +33,33 @@ const WeatherDetails = () => {
               <p>
                 <FiSearch style={{ fontSize: "1.5rem", fontWeight: "900" }} />
               </p>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <input
                   type="text"
                   value={regionInput}
-                  onChange={(e) => setRegionInput(e.currentTarget.value)}
+                  onChange={(e) => setRegionInput(e.target.value)}
                   placeholder="Search regions..."
                 />
               </form>
             </div>
             <div className={classes.text__center}>
-              {data.name ? (
+              {data.name && (
                 <h3 className={classes.title}>
                   {data.name},{" "}
                   {data.sys ? <span>{data.sys.country}</span> : null}
                 </h3>
-              ) : null}
+              )}
 
               <div className={classes.image__wrapper}>
-                {data.weather ? (
+                {data.weather && (
                   <img
                     src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`}
                     alt="clouds-icon"
                   />
-                ) : null}
+                )}
               </div>
               <div className={classes.temp__count}>
-                {data.main ? (
+                {data.main && (
                   <h1>
                     {covertTemp(data.main.temp.toFixed())}
                     <sup>
@@ -58,7 +68,7 @@ const WeatherDetails = () => {
                       </span>
                     </sup>
                   </h1>
-                ) : null}
+                )}
               </div>
               <div className={classes.day__display}>
                 {data.dt && (

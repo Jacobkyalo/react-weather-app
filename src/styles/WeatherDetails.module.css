@@ -76,6 +76,7 @@
 }
 .condition {
   margin-top: 3rem;
+  text-transform: capitalize;
 }
 @media (max-width: 992px) {
   .container {

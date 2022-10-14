@@ -28,37 +28,41 @@ const WeatherConditions = ({ data }) => {
               <h4>Wind status</h4>
               <div className={classes.details}>
                 <img src={wind} alt="wind-icon" />
-                {data.wind ? (
+                {data.wind && (
                   <p>
                     {data.wind.speed} <sub>km/h</sub>
                   </p>
-                ) : null}
+                )}
               </div>
             </div>
             <div className={classes.box}>
               <h4>Pressure</h4>
               <div className={classes.details}>
                 <img src={pressure} alt="pressure-icon" />
-                <p>60%</p>
+                {data.main && (
+                  <p>
+                    {data.main.pressure / 100} <sub>Pa</sub>
+                  </p>
+                )}
               </div>
             </div>
             <div className={classes.box}>
               <h4>Humidity</h4>
               <div className={classes.details}>
                 <img src={humidity} alt="humidity-icon" />
-                {data.main ? <p>{data.main.humidity} %</p> : null}
+                {data.main && <p>{data.main.humidity} %</p>}
               </div>
             </div>
             <div className={classes.box}>
               <h4>Visibilty</h4>
               <div className={classes.details}>
                 <img src={visibility} alt="visibility-icon" />
-                {data.visibility ? (
+                {data.visibility && (
                   <p>
                     {data.visibility.toFixed(1) / 1000}
                     <sub> km</sub>
                   </p>
-                ) : null}
+                )}
               </div>
             </div>
             <div className={classes.box}>
