@@ -19,7 +19,7 @@ npm install
 
 # SetUp
 
-Grab your api key from [openweathermap](https://openweathermap.org/api) and place it in a .env.local file at root of your project
+Grab your api key from [openweathermap](https://openweathermap.org/api) and place it in a `.env.local` file at `root` of your project
 
 ```
 REACT_APP_API_ID =****
