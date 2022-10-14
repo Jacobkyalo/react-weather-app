@@ -94,4 +94,4 @@ const WeatherConditions = ({ data }) => {
   );
 };
 
-export default WeatherConditions;
+export default React.memo(WeatherConditions);
